@@ -18,6 +18,11 @@ struct ContentView: View {
     // Each time when users double tap on the image
     @State private var imageScale: CGFloat = 1
     
+    // Mutable property to store offset value
+    // Initial width and height of the image offset are zero
+    // Will ask to update and store the new offset value of property
+    @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
+    
     // MARK: - BODY
     
     var body: some View {
@@ -31,6 +36,7 @@ struct ContentView: View {
                     .padding()
                     .shadow(color: .black.opacity(0.2), radius: 12, x: 2, y: 2)
                     .opacity(isAnimating ? 1 : 0)
+                    .offset(x: imageOffset.width, y: imageOffset.height)
                     .scaleEffect(imageScale)
                 
                 // MARK: - 1. Tap Gesture
