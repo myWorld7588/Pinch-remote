@@ -23,7 +23,17 @@ struct ContentView: View {
     // Will ask to update and store the new offset value of property
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     
-    // MARK: - BODY
+    // MARK: - FUNCTION
+    
+    func resetImageState() {
+        return withAnimation(.spring()) {
+            imageScale = 1
+            imageOffset = .zero
+        }
+    }
+    
+    // MARK: - CONTENT
+    
     
     var body: some View {
         NavigationStack {
@@ -46,9 +56,7 @@ struct ContentView: View {
                                 imageScale = 5
                             }
                         } else {
-                            withAnimation(.spring()) {
-                                imageScale = 1
-                            }
+                            resetImageState()
                         }
                     })
                 // MARK: - 2. Drag Gesture
@@ -62,6 +70,13 @@ struct ContentView: View {
                         .onChanged { value in
                             withAnimation(.linear(duration: 1)) {
                                 imageOffset = value.translation
+                            }
+                        }
+                // Back to the cover image each time when it scale value is <= 1
+                // Reset image to its original position and size each time
+                        .onEnded { _ in
+                            if imageScale <= 1 {
+                                resetImageState()
                             }
                         }
                     )
