@@ -51,6 +51,15 @@ struct ContentView: View {
                             }
                         }
                     })
+                // MARK: - 2. Drag Gesture
+                    .gesture(DragGesture()
+                        .onChanged { value in
+                            withAnimation(.linear(duration: 1)) {
+                                imageOffset = value.translation
+                            }
+                        }
+                    )
+                    
             } //: ZSTACK
             .navigationTitle("Pinch & Zoon")
             .navigationBarTitleDisplayMode(.inline)
