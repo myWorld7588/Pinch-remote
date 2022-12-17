@@ -52,6 +52,12 @@ struct ContentView: View {
                         }
                     })
                 // MARK: - 2. Drag Gesture
+                
+                // To mutate the imageOffset property when the gesture value changes.
+                // This value stores and returns the total translation from the
+                // start of the drag gesture to the current event of the DragGesture
+                // Main action is to update the imageOffset width and height values
+                // With the gesture width and heigth transition.
                     .gesture(DragGesture()
                         .onChanged { value in
                             withAnimation(.linear(duration: 1)) {
