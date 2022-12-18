@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct infoPanelView: View {
+    // Create two properties to store the image scale and offset values
     var scale: CGFloat
     var offset: CGSize
     
+    // Add Feature to show and hide the info panel by creating new immutable variable that will store the actual state info panel
+    // Hide the info panel by default
     @State private var isInfoPanelVisible: Bool = false
 
     var body: some View {
@@ -20,6 +23,8 @@ struct infoPanelView: View {
                 .symbolRenderingMode(.hierarchical)
                 .resizable()
                 .frame(width: 30, height: 30)
+            
+            // Inside the .onLongPressGesture() modifier, toggle the value from true to false and back depending on the actual state.
                 .onLongPressGesture(minimumDuration: 1) {
                     withAnimation(.easeOut) {
                         isInfoPanelVisible.toggle()
@@ -49,6 +54,8 @@ struct infoPanelView: View {
             .background(.ultraThinMaterial)
             .cornerRadius(8)
             .frame(maxWidth: 420)
+
+            //Make the info panel either visible or hidden depending on the actual state of the property
             .opacity(isInfoPanelVisible ? 1 : 0)
             
             Spacer()
