@@ -89,8 +89,15 @@ struct ContentView: View {
                     isAnimating = true
                 }
             })
+            // MARK: - Info Panel
+            .overlay(
+                infoPanelView(scale: imageScale, offset: imageOffset)
+                , alignment: .top
+            
+            )
             
         } //: NAVIGATION
+        .navigationViewStyle(.stack)
     }
 }
 
