@@ -106,11 +106,12 @@ struct ContentView: View {
                     HStack {
                         // Scale Down
                         Button {
-                            // Some Action
                             withAnimation(.spring()) {
+                    // Scaled down the image by 1 when the value of the image scale property is more than 1
                                 if imageScale > 1 {
                                     imageScale -= 1
                                     
+                    // When the value of image scale property becomes less than 1
                                     if imageScale <= 1 {
                                         resetImageState()
                                     }
