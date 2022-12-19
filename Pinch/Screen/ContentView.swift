@@ -107,6 +107,16 @@ struct ContentView: View {
                         // Scale Down
                         Button {
                             // Some Action
+                            withAnimation(.spring()) {
+                                if imageScale > 1 {
+                                    imageScale -= 1
+                                    
+                                    if imageScale <= 1 {
+                                        resetImageState()
+                                    }
+                                }
+                            }
+                            
                         } label: {
                             ControlImageView(icon: "minus.magnifyingglass")
                         }
