@@ -126,6 +126,7 @@ struct ContentView: View {
                         // Reset
                         Button {
                             // Some Action
+                            resetImageState()
                         } label: {
                             ControlImageView(icon: "arrow.up.left.and.down.right.magnifyingglass")
                         }
