@@ -131,14 +131,16 @@ struct ContentView: View {
                             ControlImageView(icon: "arrow.up.left.and.down.right.magnifyingglass")
                         }
                         
-                        
-                        // Scale Up
+                    // Scale up the image by one when the image scale property is less than five
                         Button {
                             // Some Action
                             withAnimation(.spring()) {
-                                if imageScale > 1 {
+                                if imageScale < 5 {
                                     imageScale += 1
-                                    if imageScale <= 1 {
+                                    
+                    // a statement with a case for precaution.
+                    // It makes sure that the image scale will never overpass five.
+                                    if imageScale > 5 {
                                         resetImageState()
                                     }
                                 }
